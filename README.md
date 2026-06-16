@@ -1,6 +1,18 @@
 # 🏪 mcp-hunt
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-zybit.top-6366f1?style=flat-square)](https://zybit.top/mcp-hunt/)
+> ## 🚀 在线体验
+> 
+> **👉 [http://zybit.top/mcp-hunt/](http://zybit.top/mcp-hunt/)**
+> 
+> MCP 服务器发现平台，浏览器打开即用！
+
+<p align="center">
+  <img src="docs/screenshot-home.png" width="700" alt="mcp-hunt 主页界面">
+  <br>
+  <em>浏览、搜索、发现 MCP 服务器</em>
+</p>
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-zybit.top-6366f1?style=flat-square)](http://zybit.top/mcp-hunt/)
 
 > AI Agent 的 MCP 服务器发现平台 — Discover, browse and install MCP Servers
 
@@ -8,21 +20,15 @@
 
 ---
 
-## 🌐 在线地址 / Live Demo
-
-🔗 **[zybit.top/mcp-hunt](https://zybit.top/mcp-hunt/)**
-
----
-
 ## 📊 当前数据 / Current Stats
 
 | 指标 | 数值 |
 |------|------|
-| MCP 服务器数量 | **858** |
-| GitHub 总星标 | **4,600,118 ⭐** |
+| MCP 服务器数量 | **857** |
+| GitHub 总星标 | **4,728,076 ⭐** |
 | 最热门语言 | **Python** (275 个) |
-| 第二名 | **TypeScript** (262 个) |
-| 第三名 | **Go** (75 个) |
+| 第二名 | **TypeScript** (261 个) |
+| 第三名 | **Go** (77 个) |
 
 ## 📁 项目结构
 

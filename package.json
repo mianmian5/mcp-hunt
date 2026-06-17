@@ -1,10 +1,10 @@
 {
-  "name": "web",
+  "name": "mcp-hunt",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/export-data.mjs",
+    "prebuild": "test -f data/servers.json || node scripts/export-data.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

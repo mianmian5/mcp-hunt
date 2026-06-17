@@ -1,9 +1,9 @@
 # 🏪 mcp-hunt
 
 > ## 🚀 在线体验
-> 
+>
 > **👉 [http://zybit.top/mcp-hunt/](http://zybit.top/mcp-hunt/)**
-> 
+>
 > MCP 服务器发现平台，浏览器打开即用！
 
 <p align="center">
@@ -33,13 +33,27 @@
 ## 📁 项目结构
 
 ```
-├── data/
-│   └── servers.json      # MCP 服务器数据
-├── scripts/
-│   ├── export-data.mjs   # 数据导出脚本 (GitHub API)
-│   └── fetch-data.py     # 数据抓取脚本 (备用)
-├── next.config.ts        # Next.js 配置
-└── package.json
+src/
+├── app/
+│   ├── layout.tsx         # 根布局
+│   ├── page.tsx           # 首页（搜索 + 服务器列表）
+│   ├── globals.css        # 全局样式 + Tailwind
+│   ├── submit/
+│   │   └── page.tsx       # 提交新服务器页面
+│   └── api/
+│       ├── servers/
+│       │   └── route.ts   # 服务器搜索 API
+│       └── stats/
+│           └── route.ts   # 统计数据 API
+data/
+├── servers.json           # MCP 服务器数据
+scripts/
+├── fetch-data.py          # 数据抓取脚本 (Python)
+├── fetch.sh               # 数据抓取脚本 (Shell)
+└── export-data.mjs        # 数据导出脚本 (Node.js)
+next.config.ts
+package.json
+tsconfig.json
 ```
 
 ## 🔄 数据更新
@@ -47,6 +61,22 @@
 ```bash
 # 从 GitHub 重新抓取 MCP 服务器数据
 python3 scripts/fetch-data.py
+```
+
+## 🛠️ 本地开发
+
+```bash
+# 安装依赖
+npm install
+
+# 开发模式
+npm run dev
+
+# 构建
+npm run build
+
+# 生产启动
+npm start
 ```
 
 ## 📝 许可证

@@ -60,8 +60,15 @@ export default function ServerDetailPage() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/servers?q=${encodeURIComponent(id)}&limit=1`).then(r => r.json()).then(data => {
-      const found = (data.servers || []).find((s: McpServer) => s.id === id || s.name === id);
+    // First try exact ID match, then fall back to search APIs
+    fetch(`/api/servers?q=${encodeURIComponent(id.replace(/[\/]/g, " "))}&limit=50`).then(r => r.json()).then(data => {
+      const all = data.servers || [];
+      // Try matching by id first, then by name
+      const found = all.find((s: McpServer) => s.id === id)
+        || all.find((s: McpServer) => s.github_url?.includes(id))
+        || all.find((s: McpServer) => s.name.toLowerCase() === id.toLowerCase())
+        || all.find((s: McpServer) => s.id.includes(id) || id.includes(s.id))
+        || all[0];
       setServer(found || null);
       setLoading(false);
     }).catch(() => setLoading(false));

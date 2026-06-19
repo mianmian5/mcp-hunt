@@ -42,6 +42,7 @@ export async function GET(request: Request) {
   if (q) {
     filtered = filtered.filter(
       (s) =>
+        s.id.toLowerCase().includes(q) ||
         s.name.toLowerCase().includes(q) ||
         s.description.toLowerCase().includes(q) ||
         s.topics?.some((t) => t.toLowerCase().includes(q))

@@ -219,9 +219,7 @@ export default function HomePage() {
               {servers.map((s) => (
                 <a
                   key={s.id}
-                  href={s.github_url}
-                  target="_blank"
-                  rel="noopener"
+                  href={`/servers/${encodeURIComponent(s.id)}`}
                   className="card p-5 block cursor-pointer"
                 >
                   <div className="flex items-start justify-between mb-3">

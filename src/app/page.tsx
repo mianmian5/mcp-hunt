@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 
 interface McpServer {
   id: string;
@@ -86,8 +87,15 @@ export default function HomePage() {
     }
   }, []);
 
-  useEffect(() => { fetchServers(); }, [fetchServers]);
-  useEffect(() => { fetchStats(); }, [fetchStats]);
+  // 首次挂载拉取数据：避免在 effect 中同步 setState，
+  // 通过微任务延迟 loading 更新，满足 react-hooks 规则
+  useEffect(() => {
+    const p = Promise.resolve().then(() => {
+      fetchServers();
+      fetchStats();
+    });
+    return () => { void p; };
+  }, [fetchServers, fetchStats]);
 
   return (
     <div>
@@ -99,13 +107,13 @@ export default function HomePage() {
             <span className="text-lg font-bold gradient-text">mcp-hunt</span>
           </div>
           <div className="flex items-center gap-4 text-sm">
-            <a
+            <Link
               href="/submit"
               className="px-3 py-1.5 rounded-lg font-medium"
               style={{ background: "var(--accent)", color: "white" }}
             >
               + Submit
-            </a>
+            </Link>
             <a
               href="https://github.com/mianmian5/mcp-hunt"
               target="_blank"

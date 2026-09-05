@@ -10,6 +10,7 @@ interface McpServer {
   description: string;
   github_url: string;
   stars: number;
+  forks: number;
   license: string;
   language: string;
   topics: string[];
@@ -60,7 +61,7 @@ export async function GET(request: Request) {
   } else if (sort === "name") {
     filtered.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sort === "forks") {
-    filtered.sort((a, b) => (b as any).forks - (a as any).forks);
+    filtered.sort((a, b) => b.forks - a.forks);
   } else if (sort === "updated") {
     filtered.sort((a, b) => (b.last_push_at || "").localeCompare(a.last_push_at || ""));
   }

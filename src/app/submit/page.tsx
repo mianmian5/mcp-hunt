@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SubmitPage() {
   const [form, setForm] = useState({
@@ -28,14 +29,14 @@ export default function SubmitPage() {
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <nav className="navbar sticky top-0 z-50 px-10 py-4">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <a
+          <Link
             href="/"
             className="flex items-center gap-2 no-underline"
             style={{ color: "var(--text)" }}
           >
             <span className="text-2xl">🏪</span>
             <span className="text-lg font-bold gradient-text">mcp-hunt</span>
-          </a>
+          </Link>
           <span className="text-sm" style={{ color: "var(--text-secondary)" }}>
             Submit a Server
           </span>
@@ -56,13 +57,13 @@ export default function SubmitPage() {
             <p style={{ color: "var(--text-secondary)" }}>
               A GitHub issue has been opened. The server will be indexed in the next crawl.
             </p>
-            <a
+            <Link
               href="/"
               className="inline-block mt-6 px-10 py-2 rounded-lg font-medium"
               style={{ background: "var(--accent)", color: "white" }}
             >
               Back to Browse
-            </a>
+            </Link>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">

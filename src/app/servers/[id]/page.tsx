@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 interface McpServer {
   id: string;
@@ -79,10 +80,10 @@ export default function ServerDetailPage() {
     const cmd = getInstallCmd(server);
     const envObj: Record<string, string> = {};
     envVars.filter(e => e.key.trim()).forEach(e => { envObj[e.key.trim()] = e.value.trim(); });
-    const serverEntry: any = { command: cmd.cmd, args: cmd.args };
+    const serverEntry: { command: string; args: string[]; env?: Record<string, string> } = { command: cmd.cmd, args: cmd.args };
     if (Object.keys(envObj).length > 0) serverEntry.env = envObj;
     const client = CLIENTS.find(c => c.id === selectedClient) || CLIENTS[0];
-    let config: any;
+    let config: Record<string, unknown> | { command: string; args: string[]; env?: Record<string, string> };
     if (client.id === "openclaw") {
       config = { "tools": { [server.name]: serverEntry } };
     } else if (client.id === "generic") {
@@ -129,10 +130,10 @@ export default function ServerDetailPage() {
           <p style={{ color: "var(--text-secondary)" }} className="mb-6">
             Could not find server with ID: {id}
           </p>
-          <a href="/" className="px-4 py-2 rounded-lg font-medium inline-block"
+          <Link href="/" className="px-4 py-2 rounded-lg font-medium inline-block"
             style={{ background: "var(--accent)", color: "white" }}>
             ← Back to Browse
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -146,13 +147,13 @@ export default function ServerDetailPage() {
       {/* Nav */}
       <nav className="navbar sticky top-0 z-50 px-8 sm:px-10 py-4">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2 no-underline" style={{ color: "var(--text)" }}>
+          <Link href="/" className="flex items-center gap-2 no-underline" style={{ color: "var(--text)" }}>
             <span className="text-2xl">🏪</span>
             <span className="text-lg font-bold gradient-text">mcp-hunt</span>
-          </a>
-          <a href="/" className="text-sm hover:underline" style={{ color: "var(--accent)" }}>
+          </Link>
+          <Link href="/" className="text-sm hover:underline" style={{ color: "var(--accent)" }}>
             ← Browse All
-          </a>
+          </Link>
         </div>
       </nav>
 
